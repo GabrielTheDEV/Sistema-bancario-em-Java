@@ -3,12 +3,12 @@ package entities;
 public abstract class Conta {
     private String titular;
     private String cpf;
-    private double saldo;
+    protected double saldo;
 
     public Conta(){}
 
-    private void rendimento(){
-
+    protected void rendimento(double taxa){
+        saldo += saldo * taxa;
     }
 
     public String getTitular() {
@@ -24,10 +24,12 @@ public abstract class Conta {
     }
 
     public void sacar(double saldo) {
-        this.saldo = saldo;
+        this.saldo -= saldo;
     }
     public void depositar(double saldo){
-        this.saldo = saldo;
+        this.saldo += saldo;
     }
-    public void trasferir(){}
+    public void trasferir(int idConta , double saldo ,double taxa){}
+
+
 }
